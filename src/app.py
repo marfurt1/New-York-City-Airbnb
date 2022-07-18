@@ -186,7 +186,7 @@ df_outliers['Categoria_outliers_precio'] = df_outliers['Categoria_outliers_preci
 color = ['k']
 
 plt.figure(figsize=(9,6))
-sns.scatterplot(x=airbnb.longitude, y=airbnb.latitude, hue=df.neighbourhood_group, s=5, palette='Paired')
+sns.scatterplot(x=airbnb.longitude, y=airbnb.latitude, hue= airbnb.neighbourhood_group, s=5, palette='Paired')
 sns.scatterplot(x=df_outliers.longitude, y=df_outliers.latitude, hue=df_outliers.Categoria_outliers_precio, palette=color, s=8, marker='D', legend=False)
 plt.title('Ubicación de los alojamientos con precios más altos (atípicos)')
 plt.show()
@@ -213,14 +213,14 @@ np.all(np.isnat(np.array(airbnb.loc[airbnb['number_of_reviews']==0]['last_review
 
 np.size(np.isnat(np.array(airbnb.loc[airbnb['number_of_reviews']==0]['last_review']))) == len(airbnb.loc[airbnb['number_of_reviews']==0])
 
-df_reviews = df.groupby('host_id').agg({'number_of_reviews': np.sum, 'id': pd.Series.nunique})
+df_reviews = airbnb.groupby('host_id').agg({'number_of_reviews': np.sum, 'id': pd.Series.nunique})
 pd.DataFrame(df_reviews)
 
 plt.hist(df_reviews['number_of_reviews'], bins=20)
 plt.title('Histograma de total de reviews por host')
 plt.show()
 
-df_reviews_month = df.groupby('host_id').agg({'reviews_per_month': np.sum, 'id': pd.Series.nunique})
+df_reviews_month = airbnb.groupby('host_id').agg({'reviews_per_month': np.sum, 'id': pd.Series.nunique})
 pd.DataFrame(df_reviews_month)
 
 plt.hist(df_reviews_month['reviews_per_month'], bins=20)
