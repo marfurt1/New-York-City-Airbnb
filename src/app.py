@@ -257,10 +257,12 @@ pd.DataFrame(df_precio_promedio_disponible).sort_values(by=['room_type', 'price'
 
 plt.figure(figsize=(12,6))
 df_precio_promedio_disponible.plot(kind='bar', width=-0.4, align='edge')
-df_precio_promedio_no
-cio promedio por tipo de alojamiento y distrito según disponibilidad')
+df_precio_promedio_no_disponible.plot(kind='bar', color='k', width=0.4, align='edge')
+plt.legend(['Disponible', 'No disponible'])
+plt.title('Precio promedio por tipo de alojamiento y distrito según disponibilidad')
 plt.ylabel('Precio promedio')
 plt.xlabel('Tipo de alojamiento - Distrito')
 plt.show()
-df_no_disponible['last_review'].sample(15)
+
+df_no_disponible['last_review'].sample(30)
 
