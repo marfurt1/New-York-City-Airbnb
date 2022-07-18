@@ -89,7 +89,9 @@ stat_df
 sub_6=airbnb[airbnb.price < 500]
 #using violinplot to showcase density and distribtuion of prices 
 viz_2=sns.violinplot(data=sub_6, x='neighbourhood_group', y='price')
-viz_2.set_title('Density and distribution of prices for each neighberhood_group')airbnb.neighbourhood.value_counts().head(10)
+viz_2.set_title('Density and distribution of prices for each neighberhood_group')
+
+airbnb.neighbourhood.value_counts().head(10)
 
 sub_7=airbnb.loc[airbnb['neighbourhood'].isin(['Williamsburg','Bedford-Stuyvesant','Harlem','Bushwick',
                  'Upper West Side','Hell\'s Kitchen','East Village','Upper East Side','Crown Heights','Midtown'])]
